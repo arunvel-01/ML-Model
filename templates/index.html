@@ -5,23 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ML Model</title>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href="./styles.css" rel="stylesheet" >
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <div class="login">
-        <h1> Buy Predictor: From Social Network AD</h1>
+        <h1>Buy Predictor: From Social Network AD</h1>
         <!-- Main Input for Receiving Query to our ML -->
         <form action="{{url_for('predict')}}" method="post">
-            <input type="text" name="salary" placeholder="salary" required="required" />
-            <input type="text" name="age" placeholder="age" required="required" />
-            <input type="text" name="male" placeholder="male" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            <input type="text" name="salary" placeholder="Salary" required="required" />
+            <input type="text" name="age" placeholder="Age" required="required" />
+            <input type="text" name="male" placeholder="Gender (1 for male, 0 for female)" required="required" />
+            <button type="submit">Predict</button>
         </form>
-        <br>
-        <br>
-        {{ prediction_text }}
+        <div class="prediction">
+            {{ prediction_text }}
+        </div>
     </div>
 </body>
 </html>
